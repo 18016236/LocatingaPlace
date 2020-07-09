@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.locatingaplace.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,16 +45,17 @@ public class MainActivity extends AppCompatActivity {
                 UiSettings ui = map.getUiSettings();
                 ui.setZoomControlsEnabled(true);
 
-                LatLng poi_north = new LatLng(1.424450, 103.829849);
+                final LatLng poi_north = new LatLng(1.424450, 103.829849);
                 Marker cp = map.addMarker(new
                         MarkerOptions()
                         .position(poi_north)
                         .title("HQ - North")
                         .snippet("Block 333, Admiralty Ave 3, 765654 Operating hours: 10am-5pm\n" +
                                 "Tel:65433456\n")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+                        .icon(BitmapDescriptorFactory.fromResource(android.R.drawable.btn_star_big_on)));
 
-                LatLng poi_central = new LatLng(1.300542, 103.841226);
+
+                final LatLng poi_central = new LatLng(1.300542, 103.841226);
                 Marker rp = map.addMarker(new
                         MarkerOptions()
                         .position(poi_central)
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                                 "Tel:67788652\n")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
-                LatLng poi_east = new LatLng(1.350057, 103.934452);
+                final LatLng poi_east = new LatLng(1.350057, 103.934452);
                 Marker east = map.addMarker(new
                         MarkerOptions()
                         .position(poi_east)
@@ -84,6 +86,19 @@ public class MainActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(MainActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
                 }
+          map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+              @Override
+              public boolean onMarkerClick(Marker marker) {
+                  if (marker.equals(poi_north)){
+                      Toast.makeText(MainActivity.this,"HQ - North",Toast.LENGTH_LONG).show();
+                  }else if (marker.equals(poi_central)){
+                      Toast.makeText(MainActivity.this,"Central",Toast.LENGTH_LONG).show();
+                  }else {
+                      Toast.makeText(MainActivity.this,"East",Toast.LENGTH_LONG).show();
+                  }
+                  return true;
+              }
+          });
             }
 
         });
