@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
 
-        poi_north = new LatLng(1.424450, 103.829849);
+         poi_north = new LatLng(1.424450, 103.829849);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        poi_central = new LatLng(51.592770, -0.195460);
+         poi_central = new LatLng(1.300542, 103.841226);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        poi_east = new LatLng(35.618850, -82.281770);
+         poi_east = new LatLng(1.350057, 103.934452);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
